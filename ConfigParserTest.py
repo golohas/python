@@ -94,31 +94,32 @@ ConfigParser -- responsible for parsing a list of
     write(fp)
         write the configuration state in .ini format
 '''
+import configparser
 
-import ConfigParser
 
 def test(config_file_path):
-	#init cf and read config_file
-	cf = ConfigParser.ConfigParser()
-	cf.read(config_file_path)
+    # init cf and read config_file
+    cf = configparser.ConfigParser()
+    cf.read(config_file_path)
 
-	s = cf.sections()
-	print 'sections: ', s
+    s = cf.sections()
+    print('sections: ', s)
 
-	o = cf.options("baseconf")
-	print 'options: ', o
+    o = cf.options("baseconf")
+    print('options: ', o)
 
-	v = cf.items("baseconf")
-	print 'db: ', v
+    v = cf.items("baseconf")
+    print('db: ', v)
 
-	db_host = cf.get('baseconf', 'host')
-	db_port = cf.getint('baseconf', 'port')
-	db_user = cf.get('baseconf', 'user')
-	db_pwd = cf.get('baseconf', 'passwd')
-	print db_host, db_port, db_user, db_pwd
+    db_host = cf.get('baseconf', 'host')
+    db_port = cf.getint('baseconf', 'port')
+    db_user = cf.get('baseconf', 'user')
+    db_pwd = cf.get('baseconf', 'passwd')
+    print(db_host, db_port, db_user, db_pwd)
 
-	cf.set('baseconf', 'db_passwd', '123456')
-	cf.write(open('config_file_path', 'w'))
+    cf.set('baseconf', 'db_passwd', '123456')
+    cf.write(open('config_file_path', 'w'))
+
 
 if __name__ == "__main__":
-	test("db_config.ini")
+    test("db_config.ini")
