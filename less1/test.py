@@ -1,7 +1,11 @@
 # codgin=utf-8
 
 import cProfile
+import sys
+import os
 import time
+import psutil
+from configparser import ConfigParser
 
 
 def fun():
@@ -15,6 +19,20 @@ def fun():
     return a+b
 
 
+def get_mem_info():
+    mem = psutil.virtual_memory()
+    mem1 = str(mem.total/1024/1024/1024)
+    print("total mem: ", mem1[0:4], " G")
+
+
+def get_path():
+    script_path = sys.argv[0]
+    full_path = os.path.abspath(os.path.dirname(sys.argv[0]))
+    print(script_path)
+    print(full_path)
+
+
 if __name__ == "__main__":
 
-    cProfile.run('fun()')
+    # cProfile.run('fun()')
+    get_path()
