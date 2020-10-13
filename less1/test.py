@@ -34,5 +34,9 @@ def get_path():
 
 if __name__ == "__main__":
 
+<<<<<<< HEAD
     # cProfile.run('fun()')
     get_path()
+=======
+    cProfile.run('fun()') // TODO @ xjzhao
+>>>>>>> 614717edd95ec003f1e367d9ec4d10f6425c0ee1
